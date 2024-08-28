@@ -1,0 +1,276 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+   <link rel="stylesheet" href="aos-by-red.css"> 
+
+  <title>Museum</title>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">Treveni</div>
+    <nav class="navigation">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">More</a>
+          <ul>
+            <li><a href="#">Book Online </a></li>
+            <li><a href="#">Events</a></li>
+          </ul>
+        </li>
+        
+       <li><button class="glow-button">Book Now</button></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div class="hero">
+    
+    <video autoplay loop muted playsinline class="video-bg">
+      <source src="./5823859-uhd_2160_3840_24fps.mp4" type="video/mp4">
+      
+    </video>
+    <div class="block">
+      
+        <h1  data-aos="fade-up">Welcome To Treveni </h1>
+        <h3>Immerse yourself in the rich tapestry of history and culture at Triveni Museum. Our exhibits will take you on a journey through time, showcasing the diverse heritage of civilizations from around the world. Plan your visit today and embark on an enlightening experience.</h3>
+        <button class="book-ticket">Book Your Ticket</button> 
+    </div>
+  </div>
+  <!--Chat Box-->
+  <div class="chatbot-container">
+    <!-- Chat Pop-up -->
+    <div class="chat-popup">
+        
+        <button id="chat-popup-btn" ><h3>Let's Chat!!!</h3><i class="fa-solid fa-comment"></i></button>
+    </div>
+
+    <!-- Chat Window -->
+    <div class="chat-window" id="chat-window">
+        <div class="chat-header">
+            <span>Triveni Museum</span>
+            <button id="close-chat">✖</button>
+        </div>
+        <div class="chat-body">
+            <!-- Chat messages will appear here -->
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="user-message" placeholder="Type a message...">
+            <button id="send-message">Send</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+    <!--Page 2(current )-->
+    <section class="current-exhibition">
+        <div class="container">
+            <h1 class="section-title">Current Exhibition</h1>
+            <p class="section-description">
+                The latest exhibitions across our different locations. Have fun together in the Museum.
+            </p>
+            <div class="exhibition-grid">
+                <div class="exhibition-item"  data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
+                    <img src="./musum1.jpg" alt="Mutiny: Works by Géricault">
+                    <h3 class="exhibition-title">Mutiny: Works by Géricault</h3>
+                    <p class="exhibition-dates">13 Oct 2018 - 15 Feb 2019</p>
+                </div>
+                <div class="exhibition-item"  data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
+                    <img src="./mesuem2.png" alt="Palileo Descent VR with tim Creek">
+                    <h3 class="exhibition-title">Palileo Descent VR with tim Creek</h3>
+                    <p class="exhibition-dates">Open 12:30 - 1:00 Daily</p>
+                </div>
+                <div class="exhibition-item"  data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
+                    <img src="./museum3.jpg" alt="Palileo Descent VR with tim Creek">
+                    <h3 class="exhibition-title">Visionary Vistas Expressive Echoes</h3>
+                    <p class="exhibition-dates">Open 12:30 - 1:00 Daily</p>
+                </div>
+                <div class="exhibition-item"  data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
+                    <img src="./museum 4.jpg" alt="Palileo Descent VR with tim Creek">
+                    <h3 class="exhibition-title">Visualvortex Vault:
+                      Innovative Hub
+                    </h3>
+                    <p class="exhibition-dates">Open 12:30 - 1:00 Daily</p>
+                </div>
+                
+            </div>
+            <a href="#" class="btn">See All Exhibitions</a>
+        </div>
+    </section>
+         
+    <div class="container1">  
+      <div class="content">  
+          <h2>Planning to visit?<br>Look at the timetable</h2>  
+          <p>Museum open today 9am-5pm. Last admission at 4pm.</p>  
+          <a href="#" class="event-button">See Event Calendar</a>  
+      </div>  
+  </div>  
+
+  <!--SCROLLING-TEXT-->
+ 
+   
+    <div class="scrolltext">
+      <h1 class="scrolltext-h1">18Nov-20Dec Night of Creative revealation</h1>
+      <h1 class="scrolltext-h1">18Nov-20Dec Night of Creative revealation</h1>
+      <h1 class="scrolltext-h1">18Nov-20Dec Night of Creative revealation</h1>
+      <h1 class="scrolltext-h1">18Nov-20Dec Night of Creative revealation</h1>
+    </div>
+
+  <!--Page-3-->
+  <div class="container3">
+    <h1 class="upcoming-events" data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">Upcoming Events</h1>
+    </div>
+    <div class="gallery-container">
+      <div class="gallery-item" data-aos="fade-up" data-aos-duration="1000">
+          <img src="./p1.jpg" alt="Framed Fantasies" >
+          <div class="gallery-info">
+              <h3>Framed Fantasies</h3>
+              <p>18 Nov - 22 Nov | 09AM-19PM</p>
+              <button class="book-button">BOOK</button>
+          </div>
+      </div>
+
+      <div class="gallery-item" data-aos="fade-up" data-aos-duration="700">
+          <img src="./p2.jpg" alt="Palette of Dreams">
+          <div class="gallery-info">
+              <h3>Palette of Dreams</h3>
+              <p>19 Nov - 22 Nov | 09AM-19PM</p>
+              <button class="book-button">BOOK</button>
+          </div>
+      </div>
+
+      <div class="gallery-item" data-aos="fade-up" data-aos-duration="600">
+          <img src="./p3.jpg" alt="Innovative Visions">
+          <div class="gallery-info">
+              <h3>Innovative Visions</h3>
+              <p>20 Nov - 29 Nov | 09AM-19PM</p>
+              <button class="book-button">BOOK</button>
+             
+          </div>
+      </div>
+  </div>
+  <div class="d2">
+  
+    <div class="gallery-container" data-aos="fade-up" data-aos-duration="1000">
+      <div class="gallery-item">
+          <img src="./p61.jpg" alt="Framed Fantasies">
+          <div class="gallery-info">
+              <h3>Meticulously Art</h3>
+              <p>20 Nov - 29 Nov | 09AM-19PM</p>
+              <button class="book-button">BOOK</button>
+              
+          </div>
+      </div>
+
+
+      <div class="gallery-item" data-aos="fade-up" data-aos-duration="700">
+          <img src="./p4.webp" alt="Palette of Dreams">
+          <div class="gallery-info">
+              <h3>Ancient Wonders</h3>
+              <p>1 Dec - 10 Dec | 09AM-19PM</p>
+              <button class="book-button">BOOK</button>
+              
+          </div>
+      </div>
+
+      <div class="gallery-item" data-aos="fade-up" data-aos-duration="600">
+          <img src="./p6.webp" alt="Innovative Visions">
+          <div class="gallery-info">
+              <h3>Contemporary Art</h3>
+              <p>12 Dec - 22 Dec | 09AM-19PM</p>
+              <button class="book-button">BOOK</button>
+          </div>
+      </div>
+  </div>
+  </div>
+  
+  <!--Page 4--><!--Curators Selection-->
+  <div class="container3">
+    <h1 class="upcoming-events" >Curators Selections</h1>
+    </div>
+    <div class="gallery-container">
+      <div class="gallery-item" >
+          <img src="./p1.jpg" alt="Framed Fantasies" >
+          <div class="gallery-info">
+              <h3>Framed Fantasies</h3>
+              <p>18 Nov - 22 Nov | 09AM-19PM</p>
+              <button class="book-button">BOOK</button>
+          </div>
+      </div>
+
+      <div class="gallery-item" >
+          <img src="./p2.jpg" alt="Palette of Dreams">
+          <div class="gallery-info">
+              <h3>Palette of Dreams</h3>
+              <p>18 Nov - 22 Nov | 09AM-19PM</p>
+              <button class="book-button">BOOK</button>
+          </div>
+      </div>
+
+      <div class="gallery-item" data-aos="fade-up" data-aos-duration="600">
+          <img src="./p3.jpg" alt="Innovative Visions">
+          <div class="gallery-info">
+              <h3>Innovative Visions</h3>
+              <p>18 Nov - 22 Nov | 09AM-19PM</p>
+              <button class="book-button">BOOK</button>
+             
+          </div>
+      </div>
+  </div>
+  <!--Page 5-->
+  <div class="parallax">
+    <section id="hero1">
+      <div class="hero1-text">
+          <h1 data-aos="fade-up" data-aos-duration="1000">Museum Insights</h1>
+          <p data-aos="fade-up" data-aos-duration="1000">Embark on a journey of discovery as you uncover captivating narratives and insights about the artifacts and historical narratives presented within our museum. Gain a deeper understanding of the cultural tapestry that has shaped human civilization.</p>
+      </div>
+  </section>
+  </div>
+  <!-- Page-6 -->
+   <!-- Add the Main_2 here Please -->
+
+
+    <!-- footer -->
+    <footer>
+      <div class="footerContainer">
+          <div class="socialIcons">
+              <a href=""><i class="fa-brands fa-facebook"></i></a>
+              <a href=""><i class="fa-brands fa-instagram"></i></a>
+              <a href=""><i class="fa-brands fa-twitter"></i></a>
+              <a href=""><i class="fa-brands fa-google-plus"></i></a>
+              <a href=""><i class="fa-brands fa-youtube"></i></a>
+          </div>
+          <div class="footerNav">
+              <ul><li><a href="">Home</a></li>
+                  <li><a href="">News</a></li>
+                  <li><a href="">About</a></li>
+                  <li><a href="">Contact Us</a></li>
+                  <li><a href="">our Team</a></li>
+              </ul>
+          </div>
+          
+      </div>
+      <div class="footerBottom">
+          <p>Copyright &copy;2024; Designed by <span class="designer">MatrixMitr</span></p>
+      </div>
+  </footer>
+   
+
+  
+  <!--Script-Section-->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 3000,
+        once: true,
+      });
+    </script>
+    
+</body>
+</html>
