@@ -248,6 +248,10 @@ body {
     
   }
 
+  body::-webkit-scrollbar {
+    display:none;
+}
+
 .team-section {
     text-align: center;
     padding: 50px 10px;
