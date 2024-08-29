@@ -477,21 +477,24 @@ body {
     justify-content: center;  
     align-items: center;  
     height: 60vh;  
-    background-image: url('./grey2.jfif'); 
+    background-image: url('./b1.png'); 
     background-size: cover; 
 
     background-position: center;  
 }  
 
 .content {  
-    background-color: rgb(253, 250, 250);  
+    background-color: rgba(253, 253, 253, 0.692); 
     height: fit-content;
     padding: 20px;  
     border-radius: 8px;  
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  
+    box-shadow: -15px 11px 22px 4px rgba(20, 20, 20, 0.75);
     text-align: center; 
     animation: autoshow2 both;
-  animation-timeline: view(70% 30%);
+    animation-timeline: view(70% 30%);
+    /* box-shadow: 10px 10px; */
+  
+
 }  
 
 .content h2 {  
@@ -532,6 +535,7 @@ body {
     overflow: hidden;
     white-space: nowrap;
     box-sizing: border-box;
+    position:relative;
 }
 
 .scrolltext img {
@@ -539,6 +543,27 @@ body {
     display: inline-block;
     margin-right: -5px; /* Remove any margin between images */
     animation: move-rtl 5s linear infinite;
+}
+.scrolltext-2{
+    display: flex;
+    justify-content: flex-start;
+    overflow: hidden;
+    position: absolute;
+    left: 0%;
+    bottom: 30%;
+}
+.scrolltext-h1{
+    font-size: 40px;
+    color: #7e4a35;
+    background-color: rgba(253, 253, 253, 0.397); 
+
+    -webkit-text-stroke-width: 0.1px;
+    -webkit-text-stroke-color: rgb(190, 168, 168);
+    white-space: nowrap;
+    padding: 0 6rem;
+    letter-spacing: 1px;
+    animation: move-rtl 11s linear infinite;
+
 }
 
 @keyframes move-rtl {
