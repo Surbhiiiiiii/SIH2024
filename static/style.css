@@ -210,7 +210,12 @@ body {
     margin-top: 200px; 
     margin-left: -100px;   
     
-}  
+} 
+
+.book-ticket a{
+    text-decoration: none;
+    color: inherit;
+}
 
 .book-ticket:hover {  
     background-color: var(--color-primary-light); 
@@ -251,6 +256,8 @@ body {
     bottom: 20px;
     right: 20px;
     z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 50px;
 }
 
 
@@ -266,13 +273,9 @@ body {
 }
 #chat-popup-btn {
     background-color: #D8C3A5; 
-    color: black; 
-    font-family: sans-serif;
-    font-size: 18px;
     border: none;
     padding: 0px 15px; 
     cursor: pointer;
-    border-radius: 50px;
     width: 50px; /* Initial width for just the icon */
     height: 50px;
     display: flex;
@@ -283,114 +286,17 @@ body {
     white-space: nowrap;
 }
 
-#chat-popup-btn i {
-    color: white;
-    font-size: 40px; 
+#chat-popup-btn img{
+    width: 100%;
+    height: auto;
+    transform: scale(2.5);
+} 
+
+
+.chatbot-container:hover {
+    transform: scale(1.2);
+    box-shadow: 0px 2px 5px rgb(55, 19, 19);
 }
-#chat-popup-btn span {
-    opacity: 0;
-    transition: opacity 0.3s ease; /* Smooth fade-in for text */
-}
-#chat-popup-btn:hover {
-    width: 150px; /* Expanded width on hover */
-    padding-right: 20px; /* Additional padding for the text */
-}
-
-#chat-popup-btn:hover span {
-    opacity: 1; /* Show text on hover */
-}
-
-.chat-popup p {
-    margin: 0;
-    margin-right: 10px;
-}
-
-
-.chat-window {
-    display: none;
-    flex-direction: column;
-    background-color: white;
-    width: 300px;
-    height: 400px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-
-.chat-header {
-    background-color: #6E6658;
-    color: white;
-    padding: 10px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-
-.chat-body {
-    flex: 1;
-    padding: 10px;
-    overflow-y: auto;
-    border-bottom: 1px solid #f1f1f1;
-}
-
-
-.chat-footer {
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-
-#user-message {
-    flex: 1;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    margin-right: 10px;
-}
-
-
-#send-message {
-    padding: 8px 12px;
-    background-color: #64717e;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-
-#close-chat {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-
-.user-message {
-    align-self: flex-end;
-    background-color: #D8C3A5;
-    color: black;
-    padding: 8px 12px;
-    border-radius: 15px;
-    margin-bottom: 8px;
-}
-
-.bot-message {
-    align-self: flex-start;
-    background-color: #f1f1f1;
-    color: black;
-    padding: 8px 12px;
-    border-radius: 15px;
-    margin-bottom: 8px;
-}
-
 
 /* page 2*/
 .current-exhibition {
@@ -621,33 +527,29 @@ body {
     background-color: #D8C3A5;   
 }
 
-/*Scrolling Text*/
-.scrolltext{
-    display: flex;
-    justify-content: flex-start;
-    /* background: #b8b3b3; */
+.scrolltext {
+    height: 50px;
     overflow: hidden;
-    background-image: url("./static/pattern.png");
-}
-.scrolltext-h1{
-    font-size: 40px;
-    color: solid;
-    -webkit-text-stroke-width: 0.1px;
-    -webkit-text-stroke-color: white;
     white-space: nowrap;
-    padding: 0 6rem;
-    letter-spacing: 1px;
-    animation: move-rtl 6000ms linear infinite;
-    
+    box-sizing: border-box;
 }
-@keyframes move-rtl{
-    0%{
-        transform: translateX(0);
+
+.scrolltext img {
+    height: 100%;
+    display: inline-block;
+    margin-right: -5px; /* Remove any margin between images */
+    animation: move-rtl 5s linear infinite;
+}
+
+@keyframes move-rtl {
+    0% {
+        transform: translateX(0%);
     }
-    100%{
+    100% {
         transform: translateX(-100%);
     }
 }
+
 /*Page-3*/
 .container3 {
     margin: 0 auto;
@@ -893,3 +795,4 @@ footer{
 
 
 }
+
