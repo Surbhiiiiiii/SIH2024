@@ -715,12 +715,12 @@ footer{
 .card__side--back {
   background: rgb(75,14,40);
 background: linear-gradient(90deg, rgba(75,14,40,1) 0%, rgba(144,74,20,1) 50%, rgba(75,14,40,1) 100%);
-  color: white;
+  color: var(--color-white);
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* padding: 2rem; */
+  padding: 2rem;
 }
 
 .card:hover .card__side--back {
@@ -746,7 +746,7 @@ background: linear-gradient(90deg, rgba(75,14,40,1) 0%, rgba(144,74,20,1) 50%, r
   font-weight: bold; /* Bold text */
   margin-top: 2rem; /* Space at the top */
   text-align: center;
-  color: white; /* Color of the name */
+  color: var(--color-white); /* Color of the name */
 }
 
 /* Divider Styles */
@@ -768,7 +768,7 @@ background: linear-gradient(90deg, rgba(75,14,40,1) 0%, rgba(144,74,20,1) 50%, r
   font-weight: bold; /* Bold text */
   text-align: center;
   margin-bottom: 2rem; /* Space below the role */
-  color: white; /* Color of the role */
+  color: var(--color-white); /* Color of the role */
 }
 
 /* Front Side */
@@ -816,75 +816,5 @@ background: linear-gradient(90deg, rgba(75,14,40,1) 0%, rgba(144,74,20,1) 50%, r
 
   .card__role {
     font-size: 1.8rem; /* Adjusted font size for responsiveness */
-  }
-}
-.artboard {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 2rem;
-  overflow-x: auto;
-  padding: 2rem 0;
-}
-
-.card {
-  flex: 0 0 auto;
-  width: 300px;
-  height: 400px; /*Adjusted height*/
-  perspective: 1500px;
-}
-
-.card__side {
-  height: 100%;
-  transition: all 0.8s ease;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  backface-visibility: hidden;
-  border-radius: 10px;
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-}
-
-.card__photo-img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-.card__divider {
-  width: 80%;
-  margin: 1rem auto;
-  position: static;
-}
-
-/* Adjust responsive styles */
-@media only screen and (max-width: 37.5em), only screen and (hover: none) {
-  .card {
-    height: auto;
-    background-color: transparent;
-    box-shadow: none;
-  }
-
-  .card__side {
-    height: auto;
-    position: relative;
-    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
-  }
-
-  .card__side--back {
-    transform: rotateY(0);
-  }
-
-  .card:hover .card__side--front {
-    transform: rotateY(0);
-  }
-
-  .card__details {
-    padding: 1rem;
-  }
-
-  .card__photo-img {
-    height: 300px; /* Fixed height for images on mobile */
   }
 }

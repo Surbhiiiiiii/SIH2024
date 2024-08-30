@@ -693,6 +693,7 @@ footer{
   align-items: center;
   justify-content: center;
   background-color: var(--color-white);
+  padding: 2rem;
 }
 
 .card__photo {
@@ -720,7 +721,7 @@ background: linear-gradient(90deg, rgba(75,14,40,1) 0%, rgba(144,74,20,1) 50%, r
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* padding: 2rem; */
+  padding: 2rem;
 }
 
 .card:hover .card__side--back {

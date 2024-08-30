@@ -715,7 +715,7 @@ footer{
 .card__side--back {
   background: rgb(75,14,40);
 background: linear-gradient(90deg, rgba(75,14,40,1) 0%, rgba(144,74,20,1) 50%, rgba(75,14,40,1) 100%);
-  color: white;
+  color: var(--color-white);
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
@@ -746,7 +746,7 @@ background: linear-gradient(90deg, rgba(75,14,40,1) 0%, rgba(144,74,20,1) 50%, r
   font-weight: bold; /* Bold text */
   margin-top: 2rem; /* Space at the top */
   text-align: center;
-  color: white; /* Color of the name */
+  color: var(--color-white); /* Color of the name */
 }
 
 /* Divider Styles */
@@ -768,7 +768,7 @@ background: linear-gradient(90deg, rgba(75,14,40,1) 0%, rgba(144,74,20,1) 50%, r
   font-weight: bold; /* Bold text */
   text-align: center;
   margin-bottom: 2rem; /* Space below the role */
-  color: white; /* Color of the role */
+  color: var(--color-white); /* Color of the role */
 }
 
 /* Front Side */
