@@ -252,6 +252,7 @@ body {
     display:none;
 }
 
+/* Container background color */
 .container {
   background-color: #d8cec1;
   padding: 2rem;
@@ -447,6 +448,7 @@ background: linear-gradient(90deg, rgba(75,14,40,1) 0%, rgba(144,74,20,1) 50%, r
     font-size: 1.8rem; /* Adjusted font size for responsiveness */
   }
 }
+
 
 
 /* footer */
