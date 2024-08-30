@@ -250,10 +250,10 @@ body {
     }
     
   }
-
+/* 
   body::-webkit-scrollbar {
     display:none;
-}
+} */
 
 
 
@@ -273,11 +273,6 @@ body {
   html {
     font-size: 75%;
   }
-}
-
-body {
-  height: 100vh;
-  background-color: var(--background-color);
 }
 
 /* Container background color */
@@ -544,7 +539,7 @@ button {
   align-items: center;
   min-height: 100vh;
 }
-.footer-container {
+.container {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
@@ -898,7 +893,7 @@ svg {
 .team-heading {
   font-family: "Pacifico", cursive;
   font-size: 3.5rem; /* Slightly smaller for a balanced look */
-  color: black; /* Heading color */
+  color: var(--color-primary-dark); /* Heading color */
   text-transform: uppercase;
   letter-spacing: 0.3rem; /* Adjusted spacing for a more compact look */
   margin-bottom: 2rem; /* Space below the heading */
@@ -913,7 +908,7 @@ svg {
   display: block;
   width: 6rem; /* Slightly narrower for a subtle effect */
   height: 0.4rem; /* Thinner for a more delicate appearance */
-  background-color: red;
+  background-color: var(--color-primary-light);
   margin: 1rem auto 0;
   border-radius: 2px; /* Rounded edges for a smoother look */
 }

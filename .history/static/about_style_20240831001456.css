@@ -4,12 +4,6 @@ body {
     overflow-x: hidden;
 }
 
-:root {  
-  --color-primary: #D8C3A5;  
-  --color-primary-light: #d8b17b;  
-  --color-primary-dark: #d8b17b;  
-  --color-white: #14120b;  
-}  
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 *,  
 *::before,  
@@ -136,7 +130,7 @@ body {
     padding: 80px 0;
     width: 80%;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 10px;
@@ -166,23 +160,23 @@ body {
      
     100%{
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0px);
     }
     
 }
 
 .hero-content p {
-    font-size: 1.2em;
+    font-size: 1.5em;
     text-align: center;
     padding: 10px 90px;
 }
-.hero-content p:before {
+.hero-content p::before {
     content: '';
     position: absolute;
     width: 78%;
     background-color: white;
     height: 4px;
-    top: 50%;
+    top: 52%;
     left: 10%;
     border-radius: 50%;
 }
@@ -255,7 +249,31 @@ body {
     display:none;
 }
 
+/* Container background color */
+/* Colors */
+:root {
+  --background-color: #ece0e8;
+  --color-primary-light: #ca3782;
+  --color-primary-dark: #1e0b36;
+  --color-black: #000;
+  --color-gray-dark: #aaa;
+  --color-gray-light: #eee;
+  --color-white: #fff;
+  --container-bg-color: #f4e1d2; /* Light brown or skin tone color */
+}
 
+/* Reset */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
 
 @media (max-width: 75em) { /* tab-land */
   html {
@@ -287,7 +305,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: fit-content;
+  height: 100vh;
   overflow-x: auto; /* Allow horizontal scrolling if necessary */
 }
 
@@ -378,6 +396,7 @@ background: linear-gradient(90deg, rgba(75,14,40,1) 0%, rgba(144,74,20,1) 50%, r
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 2rem;
 }
 
 .card:hover .card__side--back {
@@ -477,131 +496,90 @@ background: linear-gradient(90deg, rgba(75,14,40,1) 0%, rgba(144,74,20,1) 50%, r
 }
 
 
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@300&family=Rubik:wght@400;500;700&display=swap");
 
-:root {
-  --light: #ffffff;
-  --dark: #000;
+/* footer */
+footer{
+    background-color: #47351d;
+    box-shadow: 0 -3px 5px rgb(25, 16, 16);
 }
-body {
-  font-family: "Rubik", sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.footerContainer{
+    width: 100%;
+    padding: 70px 30px 20px ;
 }
-h3 {
-  font-family: "Noto Serif Display", serif;
-  font-size: 2.3rem;
-  font-weight: 300;
-  text-align: center;
-}
-a {
-  text-decoration: none;
-  color: var(--dark);
-  font-weight: 400;
-  transition: 0.3s ease-in;
-  border-bottom: 1px solid transparent;
-  margin-bottom: 0.5rem;
-  display: inline-flex;
-}
-a:hover {
-  border-bottom: 1px solid var(--dark);
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-button {
-  appearance: none;
-  border: 0;
-  background: transparent;
-}
-.flex {
-  display: flex;
-}
-.footer_video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  overflow: hidden;
-  border: none;
-}
-.footer_inner {
-  background: var(--light);
-  backdrop-filter: blur(50px);
-  border: 0.1px solid rgba(233, 232, 232, 0.208);
-  border-radius: 5px;
-  padding: 2rem;
-  margin: 1rem 0;
-}
-.footer {
-  position: relative;
-  display: flex;
-  align-items: center;
-  min-height: 100vh;
-}
-.footer-container {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-form {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: min(100%, 400px);
-  border-bottom: 1px solid var(--dark);
-}
-
-input {
-  padding: 0.75rem 0;
-  border: none;
-  background: none;
-  font-weight: 500;
-  transition: border 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
-  border-radius: 0;
-  width: 100%;
-  font-size: 1.05rem;
-  font-weight: bolder;
-}
-input:focus {
-  outline: none;
-}
-input::placeholder {
-  color: var(--dark);
-}
-@media (min-width: 675px) {
-  .layout {
+.socialIcons{
     display: flex;
-    flex-wrap: nowrap;
-    column-gap: 2rem;
-  }
-  .w-50 {
-    width: 50%;
-  }
-  .w-25 {
-    width: 25%;
-  }
+    justify-content: center;
 }
-form {
-  position: relative;
+.socialIcons a{
+    text-decoration: none;
+    padding:  10px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 50%;
 }
-svg {
-  margin: 0.5rem;
+.socialIcons a i{
+    font-size: 2em;
+    color: black;
+    opacity: 0,9;
 }
-.c-2 {
-  margin-top: 3.5rem;
+/* Hover affect on social media icon */
+.socialIcons a:hover{
+    background-color: #e0d3c0;
+    transition: 0.5s;
 }
-.footer_copyright {
-  color: var(--light);
+.socialIcons a:hover i{
+    color: rgb(182, 150, 150);
+    transition: 0.5s;
 }
+.footerNav{
+    margin: 30px 0;
+}
+.footerNav ul{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+.footerNav ul li a{
+    color:rgb(244, 238, 238);
+    margin: 20px;
+    text-decoration: none;
+    font-size: 1.3em;
+    opacity: 0.7;
+    transition: 0.5s;
 
+}
+.footerNav ul li a:hover{
+    opacity: 1;
+}
+.footerBottom{
+    background-color: #938282;
+    padding: 20px;
+    text-align: center;
+}
+.footerBottom p{
+    color: white;
+}
+.designer{
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin: 0px 5px;
+}
+@media (max-width: 700px){
+    .footerNav ul{
+        flex-direction: column;
+    } 
+    .footerNav ul li{
+        width:100%;
+        text-align: center;
+        margin: 10px;
+    }
+    .socialIcons a{
+        padding: 8px;
+        margin: 4px;
+    }
+}
 
 @media (max-width: 950px) {  
     .header label {  
@@ -610,7 +588,12 @@ svg {
 
 
 }
- 
+:root {  
+  --color-primary: #D8C3A5;  
+  --color-primary-light: #d8b17b;  
+  --color-primary-dark: #d8b17b;  
+  --color-white: #14120b;  
+}  
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
 /*chat box*/
@@ -882,270 +865,4 @@ svg {
 
 .history .credits a {
   color: var(--color);
-}
-/* Container background color */
-.container {
-  background-color: #d8cec1;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  overflow-x: auto; /* Allow horizontal scrolling if necessary */
-}
-
-/* Heading styles */
-.team-heading {
-  font-family: "Pacifico", cursive;
-  font-size: 3.5rem; /* Slightly smaller for a balanced look */
-  color: black; /* Heading color */
-  text-transform: uppercase;
-  letter-spacing: 0.3rem; /* Adjusted spacing for a more compact look */
-  margin-bottom: 2rem; /* Space below the heading */
-  text-align: center;
-  position: relative;
-  padding: 1rem 0;
-}
-
-/* Add a decorative line below the heading */
-.team-heading::after {
-  content: "";
-  display: block;
-  width: 6rem; /* Slightly narrower for a subtle effect */
-  height: 0.4rem; /* Thinner for a more delicate appearance */
-  background-color: red;
-  margin: 1rem auto 0;
-  border-radius: 2px; /* Rounded edges for a smoother look */
-}
-
-
-/* Ensure cards are displayed in a row */
-.artboard {
-  display: flex;
-  flex-wrap: nowrap; /* Prevent wrapping to ensure cards stay in one line */
-  gap: 2rem; /* Space between cards */
-}
-
-/* Card Container */
-.card {
-  flex: 0 0 auto; /* Prevent the card from shrinking or growing */
-  width: 300px; /* Set a fixed width for cards */
-  height: 39rem;
-  perspective: 200rem; /* Provides the 3D effect */
-}
-
-/* Card Side */
-.card__side {
-  height: 100%;
-  transition: all 0.8s ease;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  backface-visibility: hidden;
-  border-radius: 10px;
-  box-shadow: 2px 2px 3px rgb(99, 98, 98);
-  overflow: hidden;
-}
-
-/* Flip Effect */
-.card__side--front {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-white);
-}
-
-.card__photo {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border: #210a0e;
-}
-
-.card__photo-img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.card__side--back {
-  background: rgb(75,14,40);
-background: linear-gradient(90deg, rgba(75,14,40,1) 0%, rgba(144,74,20,1) 50%, rgba(75,14,40,1) 100%);
-  color: white;
-  transform: rotateY(180deg);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  /* padding: 2rem; */
-}
-
-.card:hover .card__side--back {
-  transform: rotateY(0);
-}
-
-.card:hover .card__side--front {
-  transform: rotateY(-180deg);
-}
-
-/* Details Container */
-.card__details {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-
-/* Name Styles */
-.card__name {
-  font-family: "VT323", monospace;
-  font-size: 4rem; /* Larger font size for the name */
-  font-weight: bold; /* Bold text */
-  margin-top: 2rem; /* Space at the top */
-  text-align: center;
-  color: white; /* Color of the name */
-}
-
-/* Divider Styles */
-.card__divider {
-  width: 100%;
-  border: none;
-  border-top: 2px solid var(--color-gray-light); /* Line color */
-  margin: 2rem 0; 
-  position: absolute;
-  bottom: 8rem;/* Space around the line */
-  left: 0;
-  top:auto;
-}
-
-/* Role Styles */
-.card__role {
-  font-family: "Inconsolata", monospace;
-  font-size: 2.2rem; /* Larger font size for the role */
-  font-weight: bold; /* Bold text */
-  text-align: center;
-  margin-bottom: 2rem; /* Space below the role */
-  color: white; /* Color of the role */
-}
-
-/* Front Side */
-.card__photo-img {
-  width: 100%;
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover; /* Ensure image covers container */
-}
-
-/* Responsive Adjustments */
-@media only screen and (max-width: 37.5em), only screen and (hover: none) {
-  .card {
-    width: 100%; /* Allow cards to use the full width on smaller screens */
-    height: auto;
-    border-radius: 3px;
-    background-color: var(--color-white);
-    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.15);
-  }
-
-  .card__side {
-    height: auto;
-    position: relative;
-    box-shadow: none;
-  }
-
-  .card__side--front {
-    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
-  }
-
-  .card__side--back {
-    transform: rotateY(0);
-  }
-
-  .card:hover .card__side--front {
-    transform: rotateY(0);
-  }
-
-  .card__details {
-    padding: 3rem 2rem;
-  }
-
-  .card__name {
-    font-size: 3rem; /* Adjusted font size for responsiveness */
-  }
-
-  .card__role {
-    font-size: 1.8rem; /* Adjusted font size for responsiveness */
-  }
-}
-.artboard {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 2rem;
-  overflow-x: auto;
-  padding: 2rem 0;
-}
-
-.card {
-  flex: 0 0 auto;
-  width: 300px;
-  height: 400px; /*Adjusted height*/
-  perspective: 1500px;
-}
-
-.card__side {
-  height: 100%;
-  transition: all 0.8s ease;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  backface-visibility: hidden;
-  border-radius: 10px;
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-}
-
-.card__photo-img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-.card__divider {
-  width: 80%;
-  margin: 1rem auto;
-  position: static;
-}
-
-/* Adjust responsive styles */
-@media only screen and (max-width: 37.5em), only screen and (hover: none) {
-  .card {
-    height: auto;
-    background-color: transparent;
-    box-shadow: none;
-  }
-
-  .card__side {
-    height: auto;
-    position: relative;
-    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
-  }
-
-  .card__side--back {
-    transform: rotateY(0);
-  }
-
-  .card:hover .card__side--front {
-    transform: rotateY(0);
-  }
-
-  .card__details {
-    padding: 1rem;
-  }
-
-  .card__photo-img {
-    height: 300px; /* Fixed height for images on mobile */
-  }
 }
