@@ -1,52 +1,52 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const chatWindow = document.getElementById('chat-window');
-    const chatPopupBtn = document.getElementById('chat-popup-btn');
-    const closeChatBtn = document.getElementById('close-chat');
-    const sendMessageBtn = document.getElementById('send-message');
-    const userMessageInput = document.getElementById('user-message');
-    const chatBody = document.querySelector('.chat-body');
+(function () {
+    function Timeline(element) {
+      var selectors = {
+        id: element,
+        item: element.querySelectorAll(".timeline-item"),
+        activeClass: "timeline-item--active",
+        img: ".timeline__img"
+      };
   
-    // Open chat window
-    chatPopupBtn.addEventListener('click', function () {
-        chatWindow.style.display = 'flex';
-        this.parentElement.style.display = 'none';
-    });
+      // Set the first item as active
+      selectors.item[0].classList.add(selectors.activeClass);
   
-    // Close chat window
-    closeChatBtn.addEventListener('click', function () {
-        chatWindow.style.display = 'none';
-        document.querySelector('.chat-popup').style.display = 'flex';
-    });
+      // Set the background image of the timeline container
+      selectors.id.style.backgroundImage = "url(" + selectors.item[0].querySelector(selectors.img).src + ")";
   
-    // Send message
-    sendMessageBtn.addEventListener('click', function () {
-        const userMessage = userMessageInput.value.trim();
-        if (userMessage) {
-            // User message
-            const messageElement = document.createElement('div');
-            messageElement.textContent = userMessage;
-            messageElement.classList.add('user-message');
-            chatBody.appendChild(messageElement);
-            userMessageInput.value = '';
+      var itemLength = selectors.item.length;
   
-            // Scroll to the bottom
-            chatBody.scrollTop = chatBody.scrollHeight;
+      // Add scroll event listener
+      window.addEventListener("scroll", function () {
+        var pos = window.scrollY;
   
-            // Simulate chatbot response
-            setTimeout(() => {
-                const botMessageElement = document.createElement('div');
-                botMessageElement.textContent = 'How can I assist you with booking tickets?';
-                botMessageElement.classList.add('bot-message');
-                chatBody.appendChild(botMessageElement);
+        selectors.item.forEach(function (item, i) {
+          var min = item.offsetTop;
+          var max = item.offsetHeight + item.offsetTop;
   
-                // Scroll to the bottom
-                chatBody.scrollTop = chatBody.scrollHeight;
-            }, 1000);
-        }
-    });
-  });
+          if (i === itemLength - 2 && pos > min + item.offsetHeight / 2) {
+            selectors.item.forEach(function (itm) {
+              itm.classList.remove(selectors.activeClass);
+            });
   
+            selectors.id.style.backgroundImage = "url(" + selectors.item[itemLength - 1].querySelector(selectors.img).src + ")";
+            selectors.item[itemLength - 1].classList.add(selectors.activeClass);
+          } else if (pos <= max - 40 && pos >= min) {
+            selectors.id.style.backgroundImage = "url(" + item.querySelector(selectors.img).src + ")";
+            selectors.item.forEach(function (itm) {
+              itm.classList.remove(selectors.activeClass);
+            });
+            item.classList.add(selectors.activeClass);
+          }
+        });
+      });
+    }
   
+    // Initialize the timeline
+    var timeline = document.getElementById("timeline-1");
+    if (timeline) {
+      Timeline(timeline);
+    }
+  })();
+
+
   
-  
-         
