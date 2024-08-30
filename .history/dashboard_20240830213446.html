@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <style>
+        body {
+            background-image: url(./1331567.png);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow-y: scroll;
+        }
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        .glass {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .chart-container {
+            transition: all 0.3s ease;
+        }
+        .chart-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .shadow-text {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .analysis {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-start p-4">
+    <header class="mb-8 mt-8">
+        <h2 class="text-6xl font-bold text-center text-white shadow-text glass px-10 py-5">Admin Dashboard</h2>
+    </header>
+
+    <div id="content" class="hidden w-full max-w-7xl mx-auto">
+        <div class="glass p-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="chart-container bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-lg font-semibold mb-4 text-gray-800">Number of People per Day</h3>
+                    <canvas id="chart1" class="w-full h-64"></canvas>
+                    <div id="analysis1" class="analysis"></div>
+                </div>
+                
+                <div class="chart-container bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-lg font-semibold mb-4 text-gray-800">Distribution by Weekday</h3>
+                    <canvas id="chart2" class="w-full h-64"></canvas>
+                    <div id="analysis2" class="analysis"></div>
+                </div>
+                
+                <div class="chart-container bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-lg font-semibold mb-4 text-gray-800">Gender Distribution</h3>
+                    <canvas id="chart3" class="w-full h-64"></canvas>
+                    <div id="analysis3" class="analysis"></div>
+                </div>
+                
+                <div class="chart-container bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-lg font-semibold mb-4 text-gray-800">Distribution by Slot</h3>
+                    <canvas id="chart4" class="w-full h-64"></canvas>
+                    <div id="analysis4" class="analysis"></div>
+                </div>
+                
+                <div class="chart-container bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-lg font-semibold mb-4 text-gray-800">Question Category Distribution</h3>
+                    <canvas id="chart5" class="w-full h-64"></canvas>
+                    <div id="analysis5" class="analysis"></div>
+                </div>
+                
+                <div class="chart-container bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-lg font-semibold mb-4 text-gray-800">Age Group Distribution</h3>
+                    <canvas id="chart6" class="w-full h-64"></canvas>
+                    <div id="analysis6" class="analysis"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Predefined password
+        const password = "mohan";
+
+        // Prompt user for the password
+        const userPassword = prompt("Please enter the password to access the dashboard:");
+
+        // Check if the entered password is correct
+        if (userPassword === password) {
+            // If correct, show the content
+            document.getElementById('content').classList.remove('hidden');
+
+            // Load and parse CSV data
+            Papa.parse('./data02.csv', {
+                header: true,
+                dynamicTyping: true,
+                download: true,
+                complete: function(results) {
+                    const data = results.data;
+
+                    // Check if data is loaded correctly
+                    console.log("Parsed CSV data:", data);
+
+                    // Function to count occurrences
+                    const countOccurrences = (arr) => {
+                        return arr.reduce((acc, curr) => {
+                            if (curr !== undefined && curr !== null) {
+                                acc[curr] = (acc[curr] || 0) + 1;
+                            }
+                            return acc;
+                        }, {});
+                    };
+
+                    // Function to calculate average foot count per week
+                    const calculateWeeklyAverages = (data) => {
+                        const weekMap = {};
+
+                        data.forEach(row => {
+                            if (row.Date) {
+                                const date = new Date(row.Date);
+                                const weekStart = new Date(date.setDate(date.getDate() - date.getDay() + 1)); // Get start of the week (Monday)
+                                const weekKey = weekStart.toISOString().split('T')[0]; // Format to YYYY-MM-DD
+
+                                if (!weekMap[weekKey]) {
+                                    weekMap[weekKey] = { count: 0, total: 0 };
+                                }
+                                weekMap[weekKey].count += 1;
+                                weekMap[weekKey].total += row.Number_of_people_per_day;
+                            }
+                        });
+
+                        const weeks = Object.keys(weekMap);
+                        const averages = weeks.map(week => (weekMap[week].total / weekMap[week].count).toFixed(2));
+
+                        return { weeks, averages };
+                    };
+
+                    // Calculate weekly averages
+                    const { weeks, averages } = calculateWeeklyAverages(data);
+
+                    // Function to create chart
+                    const createChart = (ctx, type, labels, data, label) => {
+                        const colors = {
+                            bar: 'rgba(75, 192, 192, 0.2)',
+                            line: 'rgba(54, 162, 235, 0.2)',
+                            pie: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#FF9F40'],
+                            doughnut: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#FF9F40'],
+                            radar: 'rgba(153, 102, 255, 0.2)',
+                            polarArea: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#FF9F40']
+                        };
+                        const borderColors = {
+                            bar: 'rgba(75, 192, 192, 1)',
+                            line: 'rgba(54, 162, 235, 1)',
+                            pie: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#FF9F40'],
+                            doughnut: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#FF9F40'],
+                            radar: 'rgba(153, 102, 255, 1)',
+                            polarArea: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#FF9F40']
+                        };
+                        return new Chart(ctx, {
+                            type: type,
+                            data: {
+                                labels: labels,
+                                datasets: [{
+                                    label: label,
+                                    data: data,
+                                    backgroundColor: type === 'pie' || type === 'doughnut' ? colors[type] : colors[type],
+                                    borderColor: type === 'pie' || type === 'doughnut' ? borderColors[type] : borderColors[type],
+                                    borderWidth: 2,
+                                    fill: type === 'line',
+                                    tension: type === 'line' ? 0.3 : 0 // Smooth curves for line charts
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                scales: type === 'bar' || type === 'line' ? {
+                                    y: {
+                                        beginAtZero: true,
+                                        grid: {
+                                            color: '#e0e0e0'
+                                        },
+                                        ticks: {
+                                            stepSize: 20 // Set interval of 20 persons on the y-axis
+                                        }
+                                    },
+                                    x: {
+                                        grid: {
+                                            color: '#e0e0e0'
+                                        },
+                                        ticks: {
+                                            autoSkip: true,
+                                            maxRotation: 0, // Prevent rotation of labels
+                                            minRotation: 0, // Prevent rotation of labels
+                                            maxTicksLimit: 10 // Limit number of ticks
+                                        }
+                                    }
+                                } : {},
+                                plugins: {
+                                    legend: {
+                                        position: 'top'
+                                    },
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function(tooltipItem) {
+                                                return tooltipItem.label + ': ' + tooltipItem.raw;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    };
+
+                    // Function to generate analysis
+                    const generateAnalysis = (chartId, chartType, data, labels) => {
+                        let analysisText = '';
+                        switch (chartId) {
+                            case 'chart1':
+                                const maxAvg = Math.max(...data);
+                                const minAvg = Math.min(...data);
+                                analysisText = `The average number of people per week ranges from ${minAvg} to ${maxAvg}.`;
+                                break;
+                            case 'chart2':
+                                const maxDay = labels[data.indexOf(Math.max(...data))];
+                                analysisText = `The most popular day of the week is ${maxDay}.`;
+                                break;
+                            case 'chart3':
+                                const malePercentage = (data[0] / data.reduce((a, b) => a + b) * 100).toFixed(2);
+                                analysisText = `The gender distribution is ${malePercentage}% male and ${100 - malePercentage}% female.`;
+                                break;
+                            case 'chart4':
+                                const maxSlot = labels[data.indexOf(Math.max(...data))];
+                                analysisText = `The most popular slot is ${maxSlot}.`;
+                                break;
+                            case 'chart5':
+                                const maxCategory = labels[data.indexOf(Math.max(...data))];
+                                analysisText = `The most common question category is ${maxCategory}.`;
+                                break;
+                            case 'chart6':
+                                const maxAgeGroup = labels[data.indexOf(Math.max(...data))];
+                                analysisText = `The most common age group is ${maxAgeGroup}.`;
+                                break;
+                        }
+                        document.getElementById(`analysis${chartId.slice(-1)}`).textContent = analysisText;
+                    };
+
+                    // Create Chart 1: Average Number of People per Week (Line Chart)
+                    createChart(
+                        document.getElementById('chart1').getContext('2d'),
+                        'line',
+                        weeks,
+                        averages,
+                        'Average Number of People per Week'
+                    );
+                    generateAnalysis('chart1', 'line', averages, weeks);
+
+                    // Create Chart 2: Weekday Distribution
+                    createChart(
+                        document.getElementById('chart2').getContext('2d'),
+                        'bar',
+                        Object.keys(countOccurrences(data.map(row => row.Weekday))),
+                        Object.values(countOccurrences(data.map(row => row.Weekday))),
+                        'Weekday Distribution'
+                    );
+                    generateAnalysis('chart2', 'bar', Object.values(countOccurrences(data.map(row => row.Weekday))), Object.keys(countOccurrences(data.map(row => row.Weekday))));
+
+                    // Create Chart 3: Gender Distribution
+                    createChart(
+                        document.getElementById('chart3').getContext('2d'),
+                        'pie',
+                        Object.keys(countOccurrences(data.map(row => row.Gender))),
+                        Object.values(countOccurrences(data.map(row => row.Gender))),
+                        'Gender Distribution'
+                    );
+                    generateAnalysis('chart3', 'pie', Object.values(countOccurrences(data.map(row => row.Gender))), Object.keys(countOccurrences(data.map(row => row.Gender))));
+
+                    // Create Chart 4: Slot Distribution
+                    createChart(
+                        document.getElementById('chart4').getContext('2d'),
+                        'doughnut',
+                        Object.keys(countOccurrences(data.map(row => row.Slot))),
+                        Object.values(countOccurrences(data.map(row => row.Slot))),
+                        'Slot Distribution'
+                    );
+                    generateAnalysis('chart4', 'doughnut', Object.values(countOccurrences(data.map(row => row.Slot))), Object.keys(countOccurrences(data.map(row => row.Slot))));
+
+                    // Create Chart 5: Question Category Distribution
+                    createChart(
+                        document.getElementById('chart5').getContext('2d'),
+                        'radar',
+                        Object.keys(countOccurrences(data.map(row => row.Question_Category))),
+                        Object.values(countOccurrences(data.map(row => row.Question_Category))),
+                        'Question Category Distribution'
+                    );
+                    generateAnalysis('chart5', 'radar', Object.values(countOccurrences(data.map(row => row.Question_Category))), Object.keys(countOccurrences(data.map(row => row.Question_Category))));
+
+                    // Create Chart 6: Age Group Distribution
+                    createChart(
+                        document.getElementById('chart6').getContext('2d'),
+                        'polarArea',
+                        Object.keys(countOccurrences(data.map(row => row.Age_Group))),
+                        Object.values(countOccurrences(data.map(row => row.Age_Group))),
+                        'Age Group Distribution'
+                    );
+                    generateAnalysis('chart6', 'polarArea', Object.values(countOccurrences(data.map(row => row.Age_Group))), Object.keys(countOccurrences(data.map(row => row.Age_Group))));
+                },
+                error: function(error) {
+                    console.error("Error loading CSV data:", error);
+                }
+            });
+        } else {
+            // If incorrect, show an alert and prevent access
+            alert("Incorrect password. Access denied.");
+        }
+    </script>
+</body>
+</html>
