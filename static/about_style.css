@@ -256,6 +256,55 @@ body {
 }
 
 /* Container background color */
+/* Colors */
+:root {
+  --background-color: #ece0e8;
+  --color-primary-light: #ca3782;
+  --color-primary-dark: #1e0b36;
+  --color-black: #000;
+  --color-gray-dark: #aaa;
+  --color-gray-light: #eee;
+  --color-white: #fff;
+  --container-bg-color: #f4e1d2; /* Light brown or skin tone color */
+}
+
+/* Reset */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+@media (max-width: 75em) { /* tab-land */
+  html {
+    font-size: 56.25%;
+  }
+}
+
+@media (max-width: 56.25em) { /* tab-port */
+  html {
+    font-size: 50%;
+  }
+}
+
+@media (min-width: 112.5em) { /* big-desktop */
+  html {
+    font-size: 75%;
+  }
+}
+
+body {
+  height: 100vh;
+  background-color: var(--background-color);
+}
+
+/* Container background color */
 .container {
   background-color: #d8cec1;
   padding: 2rem;
